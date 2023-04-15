@@ -1569,17 +1569,23 @@ $("#SelfAmountID").val((MyBalanceTemp>0)?MyBalanceTemp:'0.00');
 
 $('#transactionFee').on('input', function() { 
 
+if ($("#transactionFee").val() > 0) {
+
 $("#Tips").html("")
  console.log("transactionFee:",$("#transactionFee").val())
+
+
+
 
 // too high or too low.
 if ($("#transactionFee").val()>Coins[coinjs.pub].MaxFee  || $("#transactionFee").val()<0) {
 
 $("#transactionFee").val(Coins[coinjs.pub].MaxFee);
 $("#Tips").html("Fee is too high.")
+return;
 }
 
-
+GetPrice(Coins[coinjs.pub].Name )
 
 if ($("#transactionFee").val() <= 0.0000001 ) {
 
@@ -1608,7 +1614,7 @@ validateOutputAmount();
 
 
 
-
+}
 
 });
 	
@@ -2590,6 +2596,27 @@ console.log("o[0]",o[6])
 	};
 
 
+
+
+
+async function GetPrice(Symbol){
+var sym=Symbol.toLowerCase()
+
+	fetch('https://api.coingecko.com/api/v3/simple/price?ids='+ sym+'&vs_currencies=usd')
+  .then(response => response.json())
+  .then(data => {
+    const price = data[sym].usd;
+
+
+$("#Tips").html("≈"+  (price * $("#transactionFee").val()).toFixed(4) + " usd")
+
+
+
+    console.log(`The current price is $${price}`);
+  })
+  .catch(error => console.error(error));
+}
+
 async function GetFee(Symbol){
 
 
@@ -2598,7 +2625,7 @@ fetch(url)
   .then(response => response.json())
   .then(data => {
     const feePerKb = data['medium_fee_per_kb'] / 100000000 ;
-    console.log(`Current  transfer fee per kilobyte: ${feePerKb} litoshis`);
+    console.log(`Current  transfer fee per kilobyte: ${feePerKb} `);
   })
   .catch(error => console.error(error));
 
