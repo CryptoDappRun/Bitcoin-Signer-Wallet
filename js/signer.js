@@ -20,8 +20,8 @@ var Coins =
 
     "0": {
         "Name":"Bitcoin",
-        "Fee": "0.00001",
-        "MaxFee": "0.001",
+        "Fee": "0.00003",
+        "MaxFee": "0.01",
 		"Symbol": "btc"
     },
 
@@ -34,7 +34,7 @@ var Coins =
     "30": {
         "Name":"Dogecoin",
         "Fee": "0.01",
-        "MaxFee": "1",
+        "MaxFee": "10",
         "Symbol": "doge"
     },
     "63": {
@@ -1005,6 +1005,8 @@ console.log("transaction info:",tx.serialize())
 	/* code for the qr code scanner */
 
 	$(".qrcodeScannerSign").click(function(){
+
+		console.log("qrcodeScannerSign")
 		if ((typeof MediaStreamTrack === 'function') && typeof MediaStreamTrack.getSources === 'function'){
 			MediaStreamTrack.getSources(function(sourceInfos){
 				var f = 0;
