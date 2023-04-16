@@ -11,6 +11,7 @@ var ChainFee=0.00001
 
 var MaxFee=0.1
 
+var ShowPass=true;
 
 var wallet_timer = false;
 
@@ -2156,7 +2157,14 @@ console.log("t:",t)
 	}
 
 	$(".showKey").click(function(){
-		$("input[type='password']",$(this).parent().parent()).attr('type','text');
+if (ShowPass) {
+document.getElementById('signPrivateKey').type = 'text';
+
+}else{
+	document.getElementById('signPrivateKey').type = 'password';
+}
+ShowPass=!ShowPass
+
 	});
 
 	$("#homeBtn").click(function(e){
