@@ -1133,6 +1133,11 @@ var redeem = redeemingFrom($(this).val());
 	/* redeem from button code */
 
 	$("#redeemFromBtn").click(function(){
+
+
+		$("#BalanceID").html( "" );
+
+
 		var redeem = redeemingFrom($("#redeemFrom").val());	
 
 		$("#redeemFromStatus, #redeemFromAddress").addClass('hidden');
