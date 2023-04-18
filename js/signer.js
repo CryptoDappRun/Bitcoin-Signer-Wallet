@@ -1631,6 +1631,14 @@ validateOutputAmount();
 
 		console.log("totalFee totalInput:",$("#totalInput").html())
 
+
+var balance=  $("#totalInput").html() * 1 
+
+
+ if (balance>0) {
+$("#BalanceID").html( "Balance: " +balance );
+}
+
 		$("#transactionFee").val((ChainFee>0)?ChainFee:'0.00');
 	}
 
