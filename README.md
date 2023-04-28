@@ -9,7 +9,7 @@ A Open Source Browser Based Bitcoin online and offline Wallet.
 
 <img src="images/windows.png?raw=true"><img src="images/macos.png?raw=true"><img src="images/ios.png?raw=true"><img src="images/android.png?raw=true"><img src="images/linux.png?raw=true">
 
-Bitcoin Signer Wallet is a bitcoin/litecoin/dogecoin cold wallet,open source,you can sign your transaction offline on your Windows,MAC OS,iPhone,iPad,Android,Linux and any support HTML OS.transfer your crypto coin with safest way.
+Bitcoin Signer Wallet is a bitcoin/litecoin/dogecoin cold wallet,open source,you can sign your transaction offline on your Windows,MAC OS,iPhone,iPad,IOS,Android,Linux and any support HTML OS.transfer your crypto coin with safest way.
 Create your Bitcoin Paper Wallet.
 
 
