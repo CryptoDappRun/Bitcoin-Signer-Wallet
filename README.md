@@ -12,7 +12,7 @@ A Open Source Browser Based Bitcoin online and offline Wallet.
 Bitcoin Signer Wallet is a Bitcoin/Litecoin/Dogecoin cold wallet,open source,you can sign your transaction offline on your Windows,MAC OS,iPhone,iPad,IOS,Android,Linux and any support HTML OS.transfer your crypto coin with safest way.
 Create your Bitcoin Paper Wallet.
 
-
+include Spanish,Hindi,Bengali,Portuguese,Russian,Japanese,Turkish,Korean,French,German,Chinese and Vietnamese localization.
 Live:https://cryptodapprun.github.io/Bitcoin-Signer-Wallet/
 
 How to run:
