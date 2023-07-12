@@ -37,6 +37,460 @@
 
 		<script type="text/javascript" src="js/coin.js"></script>
 		<script type="text/javascript" src="js/signer.js"></script>
+
+
+
+
+<script type="text/javascript">
+   var arrLang = {
+  'zh': {
+    '1.Create Transaction': '1.新建交易',
+    '2.Sign': '2.签名',
+    '3.Broadcast': '3.广播',
+    'Chain Settings': '设置',
+    'IOS': '苹果系统',
+    'How to use': '使用教程',
+    'Tools': '工具',
+    'Help': '帮助',
+    'Transaction': '新建交易',
+    'Use this page to create a raw transaction': '新建一笔交易',
+    'Your Address, WIF key, Redeem Script or Transaction ID': '您的钱包地址',
+    'Recipient Address': '接收者地址',
+    'Amount': '数量',
+    'Load': '加载',
+    'Advanced Options': '高级选项',
+    'Transaction Fee(Min:0.000001)': '交易费(最低:0.000001)',
+    'Create Transaction': '创建交易',
+    'Sign Transaction': '签名交易信息',
+    'Recommended offline': '推荐离线使用该功能',
+    'Private key': '私钥',
+    'Show/Hide': '显示/隐藏',
+    'Language': '语言',
+    'Sign Transaction Info': '为了防止私钥在网络上暴露，建议在未连接互联网的安卓、苹果或电脑设备上进行签名，实现离线签名。',
+    'Broadcast Your Transaction': '广播您的交易',
+    'into the Blockchain!': '到区块链！',
+    'Please enter the signed transaction code:': '请输入签名后的交易编码。',
+    'Settings': '设置',
+    'The first transaction will returned to you as change': '第一笔交易将作为找零退还给您。',
+    'The transaction below has been generated and encoded. It can be broadcasted once it has been signed.': '下面的交易已经生成并编码。一旦签名就可以广播。',
+    'Sign': '签名',
+    'Broadcast': '广播',
+    'The above transaction has been signed:': '上面的交易已签署:',
+    'Signed transaction': '已签署的交易',
+  },
+  'es': {
+    '1.Create Transaction': '1.Crear Transacción',
+    '2.Sign': '2.Firmar',
+    '3.Broadcast': '3.Transmitir',
+    'Chain Settings': 'Configuración de la Cadena',
+    'IOS': 'IOS',
+    'How to use': 'Cómo utilizar',
+    'Tools': 'Herramientas',
+    'Help': 'Ayuda',
+    'Transaction': 'Transacción',
+    'Use this page to create a raw transaction': 'Use esta página para crear una transacción en bruto',
+    'Your Address, WIF key, Redeem Script or Transaction ID': 'Su dirección, clave WIF, script de redención o ID de transacción',
+    'Recipient Address': 'Dirección del destinatario',
+    'Amount': 'Cantidad',
+    'Load': 'Cargar',
+    'Advanced Options': 'Opciones Avanzadas',
+    'Transaction Fee(Min:0.000001)': 'Tarifa de Transacción (Mín: 0.000001)',
+    'Create Transaction': 'Crear Transacción',
+    'Sign Transaction': 'Firmar Transacción',
+    'Recommended offline': 'Recomendado sin conexión',
+    'Private key': 'Clave privada',
+    'Show/Hide': 'Mostrar/Ocultar',
+    'Language': 'Idioma',
+    'Sign Transaction Info': 'Para evitar exponer la clave privada en la red, se recomienda firmar la transacción en un dispositivo Android, iOS o una computadora sin conexión a Internet, lo que permite una firma sin conexión.',
+    'Broadcast Your Transaction': 'Transmitir su transacción',
+    'into the Blockchain!': '¡en la Blockchain!',
+    'Please enter the signed transaction code:': 'Ingrese el código de transacción firmado:',
+    'Settings': 'Configuración',
+    'The first transaction will returned to you as change': 'La primera transacción se le devolverá como cambio',
+    'The transaction below has been generated and encoded. It can be broadcasted once it has been signed.': 'La transacción a continuación ha sido generada y codificada. Se puede transmitir una vez que ha sido firmada.',
+    'Sign': 'Firmar',
+    'Broadcast': 'Transmitir',
+    'The above transaction has been signed:': 'La transacción anterior ha sido firmada:',
+    'Signed transaction': 'Transacción firmada',
+  },
+  'hi': {
+    // Hindi translations
+    '1.Create Transaction': '1.लेन-देन बनाएं',
+    '2.Sign': '2.हस्ताक्षर',
+    '3.Broadcast': '3.प्रसारण',
+    'Chain Settings': 'श्रृंखला सेटिंग्स',
+    'IOS': 'आईओएस',
+    'How to use': 'कैसे उपयोग करें',
+    'Tools': 'उपकरण',
+    'Help': 'सहायता',
+    'Transaction': 'लेन-देन',
+    'Use this page to create a raw transaction': 'एक कच्चे लेन-देन को बनाने के लिए इस पेज का उपयोग करें',
+    'Your Address, WIF key, Redeem Script or Transaction ID': 'आपका पता, WIF कुंजी, रिडीम स्क्रिप्ट या लेन-देन आईडी',
+    'Recipient Address': 'प्राप्तकर्ता का पता',
+    'Amount': 'राशि',
+    'Load': 'लोड करें',
+    'Advanced Options': 'उन्नत विकल्प',
+    'Transaction Fee(Min:0.000001)': 'लेन-देन शुल्क (न्यूनतम: 0.000001)',
+    'Create Transaction': 'लेन-देन बनाएं',
+    'Sign Transaction': 'लेन-देन हस्ताक्षर',
+    'Recommended offline': 'ऑफ़लाइन का सिफ़ारिश किया गया',
+    'Private key': 'निजी कुंजी',
+    'Show/Hide': 'दिखाएँ/छिपाएँ',
+    'Language': 'भाषा',
+    'Sign Transaction Info': 'निजी कुंजी को नेटवर्क पर उजागर करने से बचने के लिए, आपको साइन करने के लिए एंड्रॉयड, आईओएस या इंटरनेट से डिस्कनेक्टेड कंप्यूटर पर अद्वितीय हस्ताक्षर का उपयोग करने की सिफारिश की जाती है।',
+    'Broadcast Your Transaction': 'अपनी लेन-देन का प्रसारण करें',
+    'into the Blockchain!': 'ब्लॉकचेन में!',
+    'Please enter the signed transaction code:': 'कृपया हस्ताक्षरित लेन-देन कोड दर्ज करें:',
+    'Settings': 'सेटिंग्स',
+    'The first transaction will returned to you as change': 'पहली लेन-देन को आपको बदले के रूप में वापस किया जाएगा',
+    'The transaction below has been generated and encoded. It can be broadcasted once it has been signed.': 'नीचे दिए गए लेन-देन को उत्पन्न किया और एनकोड किया गया है। इसे हस्ताक्षर किए जाने के बाद प्रसारित किया जा सकता है।',
+    'Sign': 'हस्ताक्षर',
+    'Broadcast': 'प्रसारण',
+    'The above transaction has been signed:': 'ऊपर का लेन-देन हस्ताक्षर किया गया है:',
+    'Signed transaction': 'हस्ताक्षरित लेन-देन',
+  },
+  'bn': {
+    // Bengali translations
+    '1.Create Transaction': '১. লেনদেন তৈরি করুন',
+    '2.Sign': '২. স্বাক্ষর করুন',
+    '3.Broadcast': '৩. প্রচার করুন',
+    'Chain Settings': 'চেইন সেটিংস',
+    'IOS': 'আইওএস',
+    'How to use': 'কিভাবে ব্যবহার করবেন',
+    'Tools': 'টুলস',
+    'Help': 'সাহায্য',
+    'Transaction': 'লেনদেন',
+    'Use this page to create a raw transaction': 'এই পৃষ্ঠাটি ব্যবহার করে একটি কাঁচা লেনদেন তৈরি করুন',
+    'Your Address, WIF key, Redeem Script or Transaction ID': 'আপনার ঠিকানা, WIF কী, মুক্তিযোগ্য স্ক্রিপ্ট বা লেনদেন আইডি',
+    'Recipient Address': 'প্রাপকের ঠিকানা',
+    'Amount': 'পরিমাণ',
+    'Load': 'লোড করুন',
+    'Advanced Options': 'উন্নত বিকল্পসমূহ',
+    'Transaction Fee(Min:0.000001)': 'লেনদেন ফি (সর্বনিম্ন: 0.000001)',
+    'Create Transaction': 'লেনদেন তৈরি করুন',
+    'Sign Transaction': 'লেনদেন স্বাক্ষর করুন',
+    'Recommended offline': 'অফলাইনে প্রস্তাবিত',
+    'Private key': 'ব্যক্তিগত কী',
+    'Show/Hide': 'দেখান/লুকান',
+    'Language': 'ভাষা',
+    'Sign Transaction Info': 'নেটওয়ার্কে ব্যক্তিগত কীটি প্রদর্শনের থেকে বিরত থাকার জন্য, আপনাকে অফলাইনে স্বাক্ষর করার জন্য অ্যান্ড্রয়েড, আইওএস অথবা ইন্টারনেটে সংযুক্ত না করা কম্পিউটারে প্রস্তাবিত স্বাক্ষর ব্যবহার করা সুপারিশ করা হয়।',
+    'Broadcast Your Transaction': 'আপনার লেনদেন প্রচার করুন',
+    'into the Blockchain!': 'ব্লকচেইনে!',
+    'Please enter the signed transaction code:': 'দয়া করে স্বাক্ষরিত লেনদেন কোড প্রবেশ করুন:',
+    'Settings': 'সেটিংস',
+    'The first transaction will returned to you as change': 'প্রথম লেনদেনটি আপনাকে পরিবর্তনের জন্য ফিরিয়ে দেওয়া হবে',
+    'The transaction below has been generated and encoded. It can be broadcasted once it has been signed.': 'নীচের লেনদেনটি উৎপন্ন করা হয়েছে এবং এনকোড করা হয়েছে। এটি স্বাক্ষরিত হলে প্রচারিত করা যাবে।',
+    'Sign': 'স্বাক্ষর',
+    'Broadcast': 'প্রচার',
+    'The above transaction has been signed:': 'উপরের লেনদেনটি স্বাক্ষরিত হয়েছে:',
+    'Signed transaction': 'স্বাক্ষরিত লেনদেন',
+  },
+  'pt': {
+    // Portuguese translations
+    '1.Create Transaction': '1. Criar Transação',
+    '2.Sign': '2. Assinar',
+    '3.Broadcast': '3. Transmitir',
+    'Chain Settings': 'Configurações da Cadeia',
+    'IOS': 'IOS',
+    'How to use': 'Como utilizar',
+    'Tools': 'Ferramentas',
+    'Help': 'Ajuda',
+    'Transaction': 'Transação',
+    'Use this page to create a raw transaction': 'Utilize esta página para criar uma transação em bruto',
+    'Your Address, WIF key, Redeem Script or Transaction ID': 'Seu Endereço, Chave WIF, Script de Resgate ou ID da Transação',
+    'Recipient Address': 'Endereço do Destinatário',
+    'Amount': 'Quantidade',
+    'Load': 'Carregar',
+    'Advanced Options': 'Opções Avançadas',
+    'Transaction Fee(Min:0.000001)': 'Taxa de Transação (Mín: 0.000001)',
+    'Create Transaction': 'Criar Transação',
+    'Sign Transaction': 'Assinar Transação',
+    'Recommended offline': 'Recomendado offline',
+    'Private key': 'Chave Privada',
+    'Show/Hide': 'Mostrar/Ocultar',
+    'Language': 'Idioma',
+    'Sign Transaction Info': 'Para evitar expor a chave privada na rede, recomenda-se assinar a transação em um dispositivo Android, iOS ou um computador desconectado da internet, possibilitando uma assinatura offline.',
+    'Broadcast Your Transaction': 'Transmitir sua Transação',
+    'into the Blockchain!': 'para a Blockchain!',
+    'Please enter the signed transaction code:': 'Por favor, digite o código da transação assinada:',
+    'Settings': 'Configurações',
+    'The first transaction will returned to you as change': 'A primeira transação será retornada para você como troco',
+    'The transaction below has been generated and encoded. It can be broadcasted once it has been signed.': 'A transação abaixo foi gerada e codificada. Ela pode ser transmitida assim que for assinada.',
+    'Sign': 'Assinar',
+    'Broadcast': 'Transmitir',
+    'The above transaction has been signed:': 'A transação acima foi assinada:',
+    'Signed transaction': 'Transação assinada',
+  },
+  'ru': {
+    // Russian translations
+    '1.Create Transaction': '1. Создать транзакцию',
+    '2.Sign': '2. Подписать',
+    '3.Broadcast': '3. Отправить',
+    'Chain Settings': 'Настройки цепи',
+    'IOS': 'IOS',
+    'How to use': 'Как использовать',
+    'Tools': 'Инструменты',
+    'Help': 'Помощь',
+    'Transaction': 'Транзакция',
+    'Use this page to create a raw transaction': 'Используйте эту страницу для создания необработанной транзакции',
+    'Your Address, WIF key, Redeem Script or Transaction ID': 'Ваш адрес, ключ WIF, сценарий выкупа или идентификатор транзакции',
+    'Recipient Address': 'Адрес получателя',
+    'Amount': 'Сумма',
+    'Load': 'Загрузить',
+    'Advanced Options': 'Дополнительные опции',
+    'Transaction Fee(Min:0.000001)': 'Комиссия за транзакцию (Мин: 0.000001)',
+    'Create Transaction': 'Создать транзакцию',
+    'Sign Transaction': 'Подписать транзакцию',
+    'Recommended offline': 'Рекомендуется офлайн',
+    'Private key': 'Приватный ключ',
+    'Show/Hide': 'Показать/Скрыть',
+    'Language': 'Язык',
+    'Sign Transaction Info': 'Для защиты приватного ключа от раскрытия в сети рекомендуется подписывать транзакции на устройстве Android, iOS или компьютере, не подключенном к интернету, обеспечивая офлайн-подпись.',
+    'Broadcast Your Transaction': 'Отправить вашу транзакцию',
+    'into the Blockchain!': 'в блокчейн!',
+    'Please enter the signed transaction code:': 'Пожалуйста, введите код подписанной транзакции:',
+    'Settings': 'Настройки',
+    'The first transaction will returned to you as change': 'Первая транзакция будет возвращена вам в виде сдачи',
+    'The transaction below has been generated and encoded. It can be broadcasted once it has been signed.': 'Нижеприведенная транзакция была создана и закодирована. Она может быть отправлена после подписи.',
+    'Sign': 'Подписать',
+    'Broadcast': 'Отправить',
+    'The above transaction has been signed:': 'Вышеуказанная транзакция была подписана:',
+    'Signed transaction': 'Подписанная транзакция',
+  },
+  'tr': {
+    // Turkish translations
+    '1.Create Transaction': '1. İşlem Oluştur',
+    '2.Sign': '2. İmzala',
+    '3.Broadcast': '3. Yayınla',
+    'Chain Settings': 'Zincir Ayarları',
+    'IOS': 'IOS',
+    'How to use': 'Nasıl kullanılır',
+    'Tools': 'Araçlar',
+    'Help': 'Yardım',
+    'Transaction': 'İşlem',
+    'Use this page to create a raw transaction': 'Bu sayfayı kullanarak ham bir işlem oluşturun',
+    'Your Address, WIF key, Redeem Script or Transaction ID': 'Adresiniz, WIF anahtarınız, Geri Alma Betiği veya İşlem Kimliği',
+    'Recipient Address': 'Alıcı Adresi',
+    'Amount': 'Miktar',
+    'Load': 'Yükle',
+    'Advanced Options': 'Gelişmiş Seçenekler',
+    'Transaction Fee(Min:0.000001)': 'İşlem Ücreti (Min: 0.000001)',
+    'Create Transaction': 'İşlem Oluştur',
+    'Sign Transaction': 'İşlemi İmzala',
+    'Recommended offline': 'Çevrimdışı kullanım önerilir',
+    'Private key': 'Özel Anahtar',
+    'Show/Hide': 'Göster/Gizle',
+    'Language': 'Dil',
+    'Sign Transaction Info': 'Özel anahtarınızı ağda ifşa etmemek için işlemi bir Android, iOS veya internete bağlı olmayan bir bilgisayarda imzalamanız önerilir.',
+    'Broadcast Your Transaction': 'İşleminizi Yayınla',
+    'into the Blockchain!': 'blok zincire!',
+    'Please enter the signed transaction code:': 'Lütfen imzalanmış işlem kodunu girin:',
+    'Settings': 'Ayarlar',
+    'The first transaction will returned to you as change': 'İlk işlem size değişim olarak iade edilecektir',
+    'The transaction below has been generated and encoded. It can be broadcasted once it has been signed.': 'Aşağıdaki işlem oluşturuldu ve kodlandı. İmzalandığında yayınlanabilir.',
+    'Sign': 'İmzala',
+    'Broadcast': 'Yayınla',
+    'The above transaction has been signed:': 'Yukarıdaki işlem imzalanmıştır:',
+    'Signed transaction': 'İmzalı işlem',
+  },
+  'ko': {
+    // Korean translations
+    '1.Create Transaction': '1. 거래 생성',
+    '2.Sign': '2. 서명',
+    '3.Broadcast': '3. 브로드캐스트',
+    'Chain Settings': '체인 설정',
+    'IOS': 'IOS',
+    'How to use': '사용 방법',
+    'Tools': '도구',
+    'Help': '도움말',
+    'Transaction': '거래',
+    'Use this page to create a raw transaction': '이 페이지를 사용하여 원시 거래를 생성합니다',
+    'Your Address, WIF key, Redeem Script or Transaction ID': '귀하의 주소, WIF 키, 교환 스크립트 또는 거래 ID',
+    'Recipient Address': '수신자 주소',
+    'Amount': '금액',
+    'Load': '로드',
+    'Advanced Options': '고급 옵션',
+    'Transaction Fee(Min:0.000001)': '거래 수수료(최소: 0.000001)',
+    'Create Transaction': '거래 생성',
+    'Sign Transaction': '거래 서명',
+    'Recommended offline': '오프라인 사용 권장',
+    'Private key': '개인 키',
+    'Show/Hide': '보이기/숨기기',
+    'Language': '언어',
+    'Sign Transaction Info': '개인 키가 네트워크에서 노출되지 않도록 Android, iOS 또는 인터넷에 연결되지 않은 컴퓨터에서 거래를 서명하는 것이 좋습니다.',
+    'Broadcast Your Transaction': '거래를 브로드캐스트',
+    'into the Blockchain!': '블록체인으로!',
+    'Please enter the signed transaction code:': '서명된 거래 코드를 입력하세요:',
+    'Settings': '설정',
+    'The first transaction will returned to you as change': '첫 번째 거래는 거스름돈으로 반환됩니다',
+    'The transaction below has been generated and encoded. It can be broadcasted once it has been signed.': '아래 거래가 생성되어 인코딩되었습니다. 서명된 후에 브로드캐스트할 수 있습니다.',
+    'Sign': '서명',
+    'Broadcast': '브로드캐스트',
+    'The above transaction has been signed:': '위의 거래가 서명되었습니다:',
+    'Signed transaction': '서명된 거래',
+  },
+  'fr': {
+    // French translations
+    '1.Create Transaction': '1. Créer une transaction',
+    '2.Sign': '2. Signer',
+    '3.Broadcast': '3. Diffuser',
+    'Chain Settings': 'Paramètres de la chaîne',
+    'IOS': 'IOS',
+    'How to use': 'Comment utiliser',
+    'Tools': 'Outils',
+    'Help': 'Aide',
+    'Transaction': 'Transaction',
+    'Use this page to create a raw transaction': 'Utilisez cette page pour créer une transaction brute',
+    'Your Address, WIF key, Redeem Script or Transaction ID': 'Votre adresse, clé WIF, script de récupération ou ID de transaction',
+    'Recipient Address': 'Adresse du destinataire',
+    'Amount': 'Montant',
+    'Load': 'Charger',
+    'Advanced Options': 'Options avancées',
+    'Transaction Fee(Min:0.000001)': 'Frais de transaction (Min: 0.000001)',
+    'Create Transaction': 'Créer une transaction',
+    'Sign Transaction': 'Signer la transaction',
+    'Recommended offline': 'Recommandé hors ligne',
+    'Private key': 'Clé privée',
+    'Show/Hide': 'Afficher/Masquer',
+    'Language': 'Langue',
+    'Sign Transaction Info': 'Pour éviter de divulguer votre clé privée sur le réseau, il est recommandé de signer la transaction sur un appareil Android, iOS ou un ordinateur déconnecté d\'Internet, ce qui permet une signature hors ligne.',
+    'Broadcast Your Transaction': 'Diffuser votre transaction',
+    'into the Blockchain!': 'dans la blockchain !',
+    'Please enter the signed transaction code:': 'Veuillez entrer le code de transaction signée :',
+    'Settings': 'Paramètres',
+    'The first transaction will returned to you as change': 'La première transaction vous sera retournée en tant que monnaie rendue',
+    'The transaction below has been generated and encoded. It can be broadcasted once it has been signed.': 'La transaction ci-dessous a été générée et encodée. Elle peut être diffusée une fois qu\'elle a été signée.',
+    'Sign': 'Signer',
+    'Broadcast': 'Diffuser',
+    'The above transaction has been signed:': 'La transaction ci-dessus a été signée :',
+    'Signed transaction': 'Transaction signée',
+  },
+  'de': {
+    // German translations
+    '1.Create Transaction': '1. Transaktion erstellen',
+    '2.Sign': '2. Signieren',
+    '3.Broadcast': '3. Übertragen',
+    'Chain Settings': 'Ketteneinstellungen',
+    'IOS': 'IOS',
+    'How to use': 'Anleitung',
+    'Tools': 'Werkzeuge',
+    'Help': 'Hilfe',
+    'Transaction': 'Transaktion',
+    'Use this page to create a raw transaction': 'Verwenden Sie diese Seite, um eine Rohtransaktion zu erstellen',
+    'Your Address, WIF key, Redeem Script or Transaction ID': 'Ihre Adresse, WIF-Schlüssel, Rückzahlungsskript oder Transaktions-ID',
+    'Recipient Address': 'Empfängeradresse',
+    'Amount': 'Betrag',
+    'Load': 'Laden',
+    'Advanced Options': 'Erweiterte Optionen',
+    'Transaction Fee(Min:0.000001)': 'Transaktionsgebühr (Min: 0,000001)',
+    'Create Transaction': 'Transaktion erstellen',
+    'Sign Transaction': 'Transaktion signieren',
+    'Recommended offline': 'Empfohlen offline',
+    'Private key': 'Privater Schlüssel',
+    'Show/Hide': 'Anzeigen/Ausblenden',
+    'Language': 'Sprache',
+    'Sign Transaction Info': 'Um zu verhindern, dass Ihr privater Schlüssel im Netzwerk veröffentlicht wird, wird empfohlen, die Transaktion auf einem Android-, iOS- oder nicht mit dem Internet verbundenen Computer zu signieren und eine Offline-Signatur zu verwenden.',
+    'Broadcast Your Transaction': 'Ihre Transaktion übertragen',
+    'into the Blockchain!': 'in die Blockchain!',
+    'Please enter the signed transaction code:': 'Bitte geben Sie den signierten Transaktionscode ein:',
+    'Settings': 'Einstellungen',
+    'The first transaction will returned to you as change': 'Die erste Transaktion wird Ihnen als Wechselgeld zurückgegeben',
+    'The transaction below has been generated and encoded. It can be broadcasted once it has been signed.': 'Die folgende Transaktion wurde generiert und codiert. Sie kann übertragen werden, sobald sie signiert wurde.',
+    'Sign': 'Signieren',
+    'Broadcast': 'Übertragen',
+    'The above transaction has been signed:': 'Die obige Transaktion wurde signiert:',
+    'Signed transaction': 'Signierte Transaktion',
+  },
+  'vi': {
+    // Vietnamese translations
+    '1.Create Transaction': '1. Tạo Giao dịch',
+    '2.Sign': '2. Ký',
+    '3.Broadcast': '3. Phát sóng',
+    'Chain Settings': 'Cài đặt Chuỗi',
+    'IOS': 'IOS',
+    'How to use': 'Cách sử dụng',
+    'Tools': 'Công cụ',
+    'Help': 'Trợ giúp',
+    'Transaction': 'Giao dịch',
+    'Use this page to create a raw transaction': 'Sử dụng trang này để tạo một giao dịch nguyên thủy',
+    'Your Address, WIF key, Redeem Script or Transaction ID': 'Địa chỉ, khóa WIF, mã rút gọn hoặc ID Giao dịch của bạn',
+    'Recipient Address': 'Địa chỉ người nhận',
+    'Amount': 'Số tiền',
+    'Load': 'Tải',
+    'Advanced Options': 'Tùy chọn nâng cao',
+    'Transaction Fee(Min:0.000001)': 'Phí giao dịch (Tối thiểu: 0.000001)',
+    'Create Transaction': 'Tạo Giao dịch',
+    'Sign Transaction': 'Ký Giao dịch',
+    'Recommended offline': 'Đề nghị sử dụng ngoại tuyến',
+    'Private key': 'Khóa riêng',
+    'Show/Hide': 'Hiện/Ẩn',
+    'Language': 'Ngôn ngữ',
+    'Sign Transaction Info': 'Để tránh tiết lộ khóa riêng của bạn trên mạng, đề nghị ký giao dịch trên thiết bị Android, iOS hoặc máy tính không kết nối Internet, từ đó thực hiện việc ký ngoại tuyến.',
+    'Broadcast Your Transaction': 'Phát sóng Giao dịch của bạn',
+    'into the Blockchain!': 'vào Blockchain!',
+    'Please enter the signed transaction code:': 'Vui lòng nhập mã giao dịch đã ký:',
+    'Settings': 'Cài đặt',
+    'The first transaction will returned to you as change': 'Giao dịch đầu tiên sẽ được trả lại cho bạn như là tiền thừa',
+    'The transaction below has been generated and encoded. It can be broadcasted once it has been signed.': 'Giao dịch dưới đây đã được tạo và mã hóa. Nó có thể được phát sóng sau khi đã được ký.',
+    'Sign': 'Ký',
+    'Broadcast': 'Phát sóng',
+    'The above transaction has been signed:': 'Giao dịch trên đã được ký:',
+    'Signed transaction': 'Giao dịch đã ký',
+  },
+  'ja': {
+    // Japanese translations
+    '1.Create Transaction': '1. トランザクションを作成する',
+    '2.Sign': '2. 署名する',
+    '3.Broadcast': '3. ブロードキャストする',
+    'Chain Settings': 'チェーンの設定',
+    'IOS': 'IOS',
+    'How to use': '使い方',
+    'Tools': 'ツール',
+    'Help': 'ヘルプ',
+    'Transaction': 'トランザクション',
+    'Use this page to create a raw transaction': 'このページを使って生のトランザクションを作成します',
+    'Your Address, WIF key, Redeem Script or Transaction ID': 'あなたのアドレス、WIFキー、償還スクリプト、またはトランザクションID',
+    'Recipient Address': '受取人のアドレス',
+    'Amount': '金額',
+    'Load': 'ロード',
+    'Advanced Options': '高度なオプション',
+    'Transaction Fee(Min:0.000001)': 'トランザクション手数料（最小：0.000001）',
+    'Create Transaction': 'トランザクションを作成する',
+    'Sign Transaction': 'トランザクションに署名する',
+    'Recommended offline': 'オフラインでの使用をおすすめします',
+    'Private key': 'プライベートキー',
+    'Show/Hide': '表示/非表示',
+    'Language': '言語',
+    'Sign Transaction Info': 'プライベートキーをネットワーク上で公開しないために、Android、iOS、またはインターネットに接続されていないコンピュータでトランザクションに署名することをおすすめします。',
+    'Broadcast Your Transaction': 'トランザクションをブロードキャストする',
+    'into the Blockchain!': 'ブロックチェーンに！',
+    'Please enter the signed transaction code:': '署名されたトランザクションコードを入力してください：',
+    'Settings': '設定',
+    'The first transaction will returned to you as change': '最初のトランザクションはお釣りとして返金されます',
+    'The transaction below has been generated and encoded. It can be broadcasted once it has been signed.': '以下のトランザクションが生成され、エンコードされました。署名されるとブロードキャストできます。',
+    'Sign': '署名',
+    'Broadcast': 'ブロードキャスト',
+    'The above transaction has been signed:': '上記のトランザクションは署名されました：',
+    'Signed transaction': '署名済みトランザクション',
+  },
+
+
+    };
+
+    // Process translation
+    $(function() {
+      $('.translate').click(function() {
+        var lang = $(this).attr('id');
+console.log("change language..");
+        $('.lang').each(function(index, item) {
+          $(this).text(arrLang[lang][$(this).attr('key')]);
+        });
+      });
+    });
+  </script>
+
+
+
 	</head>
 
 	<body>
@@ -53,7 +507,7 @@
 						</button>
 
  
-						<a  href="#home" class="navbar-brand" id="homeBtn"><img src="images/logo.png"  height="30"></a>
+						
 
 					</div>
 					<div class="collapse navbar-collapse">
@@ -65,24 +519,30 @@
 <li><a href="" target="_blank">Service Status</a></li>
 -->
 
+
+
+<li> <a  href="#home" class="navbar-brand" id="homeBtn"><img src="images/logo.png"  height="30"></a> </li>
+
 <li>  <a id="CurrentChainID" class="text-success" href="#" data-toggle="tab"> </a>  </li>
 
 
-						<li><a href="#newTransaction" data-toggle="tab">1.Create Transaction</a></li>
-						<li><a href="#sign" data-toggle="tab">2.Sign</a></li>
-							<li><a href="#broadcast" data-toggle="tab">3.Broadcast</a></li>
-<li><a href="#settings" data-toggle="tab"><span class="glyphicon glyphicon-wrench"></span>Chain Settings</a></li>
+<li><a href="#newTransaction" class="lang" key="1.Create Transaction" data-toggle="tab">1.Create Transaction</a></li>
+<li><a href="#sign" class="lang" key="2.Sign" data-toggle="tab">2.Sign</a></li>
+
+<li><a href="#broadcast" class="lang" key="3.Broadcast" data-toggle="tab">3.Broadcast</a></li>
+
+<li><a href="#settings" class="lang" key="Chain Settings" data-toggle="tab"><span class="glyphicon glyphicon-wrench" ></span>Chain Settings</a></li>
 
 
 
-<li><a href="#IOS" data-toggle="tab">Run on IOS</a></li>
+<li><a href="#IOS" class="lang" key="IOS" data-toggle="tab">IOS</a></li>
 
 
-<li><a href="#Tutorial" data-toggle="tab">How to use</a></li>
+<li><a href="#Tutorial" class="lang" key="How to use" data-toggle="tab">How to use</a></li>
 
 
 							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-plus"></span> Tools<b class="caret"></b></a>
+								<a href="#" class="dropdown-toggle lang"   key="Tools" data-toggle="dropdown"><span class="glyphicon glyphicon-plus"></span>Tools<b class="caret"></b></a>
 								<ul class="dropdown-menu">
 								<li><a href="#verify" data-toggle="tab"><span class="glyphicon glyphicon-ok"></span> Verify</a></li>
 									<li><a href="#newAddress" data-toggle="tab">Address</a></li>
@@ -99,7 +559,7 @@
 							
 
 							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-info-sign"></span> Help<b class="caret"></b></a>
+								<a href="#" class="dropdown-toggle lang"   key="Help" data-toggle="dropdown"><span class="glyphicon glyphicon-info-sign"></span>Help<b class="caret"></b></a>
 								<ul class="dropdown-menu">
 									<!--<li><a href="#fees" data-toggle="tab">Fee Calculator</a></li>
 
@@ -112,6 +572,41 @@
 									
 									
 									<li><a href="#about" data-toggle="tab">About</a></li>
+								</ul>
+							</li>
+
+
+
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle lang"   key="Language" data-toggle="dropdown"> Language<b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<!--<li><a href="#fees" data-toggle="tab">Fee Calculator</a></li>
+
+
+									<li role="separator" class="divider"></li>
+
+
+									-->
+									
+									
+									
+									 
+									<li><a href="#" id="es"  class="translate" data-toggle="tab">Español</a></li>
+									<li><a href="#" id="hi"  class="translate" data-toggle="tab">Non</a></li>
+									<li><a href="#" id="bn"  class="translate" data-toggle="tab">Bengali</a></li>
+									<li><a href="#" id="pt"  class="translate" data-toggle="tab">Português</a></li>
+									<li><a href="#" id="ru"  class="translate" data-toggle="tab">Russian</a></li>
+									 
+									<li><a href="#" id="ja"  class="translate" data-toggle="tab">Japanese</a></li>
+									<li><a href="#" id="tr"  class="translate" data-toggle="tab">Turkish</a></li>
+									<li><a href="#" id="ko"  class="translate" data-toggle="tab">Korean</a></li>
+									<li><a href="#" id="fr"  class="translate" data-toggle="tab">French</a></li>
+
+
+									<li><a href="#" id="zh"  class="translate" data-toggle="tab">中文</a></li>
+									<li><a href="#" id="vi"  class="translate" data-toggle="tab">Vietnamese</a></li>
+
+
 								</ul>
 							</li>
 
@@ -659,17 +1154,17 @@
 					</div>
 
 					<div class="tab-pane tab-content" id="newTransaction">
-						<h2>Transaction  </h2>
-						<p>Use this page to create a raw transaction</p>
+						<h2  class="lang" key="Transaction">Transaction  </h2>
+						<p class="lang" key="Use this page to create a raw transaction"  >Use this page to create a raw transaction</p>
 
-						<b>Your Address, WIF key, Redeem Script or Transaction ID</b>:
+						<b class="lang"  key="Your Address, WIF key, Redeem Script or Transaction ID">Your Address, WIF key, Redeem Script or Transaction ID</b>:
 						<div class="input-group">
 							<span class="input-group-btn">
 								<button class="btn btn-info qrcodeScanner" type="button" data-toggle="modal" data-target="#modalQrcodeScanner" forward-result="#redeemFrom"><span class="glyphicon glyphicon-camera"></span></button>
 							</span>
 							<input type="text" id="redeemFrom" class="form-control" value="">
 							<span class="input-group-btn">
-								<button id="redeemFromBtn" class="btn btn-info" type="button">Load</button>
+								<button id="redeemFromBtn" class="btn btn-info lang" key="Load" type="button">Load</button>
 							</span>
 						</div>
 
@@ -682,7 +1177,7 @@
 						<div class="hidden alert alert-info" id="redeemFromAddress"></div>
 
 						<div>
-							<a href="javascript:;" class="optionsCollapse"><div class="well well-sm"><span class="glyphicon glyphicon-collapse-down" id="glyphcollapse"></span> Advanced Options</div></a>
+							<a href="javascript:;" class="optionsCollapse lang" key="Advanced Options"><div class="well well-sm"><span class="glyphicon glyphicon-collapse-down" id="glyphcollapse"></span>Advanced Options</div></a>
 
 							<div class="hidden optionsAdvanced">
 
@@ -733,13 +1228,13 @@
 
 							<div class="tab-pane fade in active" id="txoutputs">
 
-								<div> The first transaction will returned to you as 'change'. </div>
+								<div class="lang" key="The first transaction will returned to you as change">The first transaction will returned to you as change</div>
 								<div class="row">
 									<div class="col-xs-8">
-										<label><abbr title="Address to send to">To Address</abbr></label>
+										<label class="lang" key="Recipient Address"><abbr title="Address to send to">Recipient Address</abbr></label>
 									</div>
 									<div class="col-xs-3">
-										<label><abbr title="Amount to send">Amount</abbr></label>
+										<label class="lang" key="Amount"><abbr title="Amount to send">Amount</abbr></label>
 									</div>
 									<div class="col-xs-1">
 									</div>
@@ -819,7 +1314,7 @@
 
 						<div class="row">
 							<div class="col-xs-6">
-								<label><abbr title="the fee to miner,fee higher,speed faster">Transaction Fee(Min:0.000001)</abbr>&nbsp;&nbsp;<a href="javascript:;" id="feesestnewtx"><span class="glyphicon glyphicon-question-sign"></span></a></label>
+								<label  class="lang" key="Transaction Fee(Min:0.000001)"><abbr title="the fee to miner,fee higher,speed faster">Transaction Fee(Min:0.000001)</abbr>&nbsp;&nbsp;<a href="javascript:;" id="feesestnewtx"><span class="glyphicon glyphicon-question-sign"></span></a></label>
 
 								<!--readonly-->
 								<input type="text" id="transactionFee" class="form-control" value="0.0000" >
@@ -836,14 +1331,16 @@
 							<label>Transaction</label>
 							<button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode" style="float:right;"><span class="glyphicon glyphicon-qrcode"></span></button>
 
-							<p>The transaction below has been generated and encoded. It can be broadcasted once it has been signed.</p>
+							<p class="lang" key="The transaction below has been generated and encoded.It can be broadcasted once it has been signed.">The transaction below has been generated and encoded.It can be broadcasted once it has been signed.</p>
 							<br>
 			                                <textarea class="form-control" style="height:150px" readonly></textarea>
 
 							<p class="text-muted">Size: <span class="txSize">0</span> <i>bytes</i></p>
 						</div>
 
-						<input type="button" value="Create Transaction" class="btn btn-primary" id="transactionBtn">
+<!--<input type="button"  class="btn btn-primary" id="transactionBtn">  -->		
+
+<button type="button" class="btn btn-primary lang" key="Create Transaction" id="transactionBtn">Create Transaction</button>
 
 						<br>
 <br><br><br>
@@ -1326,17 +1823,17 @@
 					</div>
 
 					<div class="tab-pane tab-content" id="sign">
-						<h2>Sign Transaction <small class="text-success">Recommended offline</small> </h2><P>In order to prevent the private key from being exposed on the network, it is recommended to sign on an Android, IOS or computer device that is not connected to the Internet to realize offline signing.</P>
+						<h2 class="lang" key="Sign Transaction">Sign Transaction</h2> <h5 class="text-success lang" key="Recommended offline">Recommended offline</h5><P class="lang" key="Sign Transaction Info">In order to prevent the private key from being exposed on the network, it is recommended to sign on an Android, IOS or computer device that is not connected to the Internet to realize offline signing.</P>
 						 
 
 						<div class="row">
 							<div class="col-md-12">
-								<label for="signPrivateKey">Private key</label>
+								<label for="signPrivateKey" class="lang" key="Private key" >Private key</label>
 
 								<div class="input-group">
 									<input id="signPrivateKey" type="password" class="form-control" value="">
 									<span class="input-group-btn">
-										<button class="showKey btn btn-default" type="button">Show/Hide</button>
+										<button class="showKey btn btn-default lang" key="Show/Hide" type="button">Show/Hide</button>
 									</span>
 								</div>
 							</div>
@@ -1360,7 +1857,7 @@
 						<br>
 
 						<a href="javascript:;" id="signAdvancedCollapse">
-							<div class="well well-sm"><span class="glyphicon glyphicon-collapse-down"></span> Advanced Options</div>
+							<div class="well well-sm lang" key="Advanced Options"><span class="glyphicon glyphicon-collapse-down" ></span>Advanced Options</div>
 						</a>
 
 						<div id="signAdvanced" class="hidden">
@@ -1391,23 +1888,29 @@
 						</div>
 
 						<div class="alert alert-success hidden" id="signedData">
-							<label>Signed transaction</label>
+							<label class="lang" key="Signed transaction">Signed transaction</label>
 							<button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode" style="float:right;"><span class="glyphicon glyphicon-qrcode"></span></button>
-							<p>The above transaction has been signed:</p>
+							<p class="lang" key="The above transaction has been signed:">The above transaction has been signed:</p>
 
                         				<textarea class="form-control script" style="height:160px" readonly></textarea>
                                     
 							<p class="text-muted">Size: <span class="txSize">0</span> <i>bytes</i></p>
 						</div>
 
-						<input type="button" value="Sign" class="btn btn-primary" id="signBtn">
+					<!--<input type="button" value="Sign" class="btn btn-primary" id="signBtn">-->	
+
+
+						<button type="button" class="btn btn-primary lang" key="Sign" id="signBtn">Sign</button>
+
+
 						<br>
 					</div>
 
 					<div class="tab-pane tab-content" id="broadcast">
-						<h2>Broadcast Transaction <small>into the Blockchain!</small></h2>
+						<h2 class="lang" key="Broadcast Your Transaction">Broadcast Your Transaction</h2>
+						<h5 class="text-success lang" key="into the Blockchain!">into the Blockchain!</h5>
 						<a href="#settings" style="float:right;"><span class="glyphicon glyphicon-cog"></span></a>
-						<p>Enter your hex encoded bitcoin transaction</p>
+						<p class="lang" key="Please enter the signed transaction code:">Please enter the signed transaction code:</p>
 						<textarea class="form-control" style="height:125px" id="rawTransaction"></textarea>
 						<br>
 						<div id="rawTransactionStatus" class="alert hidden">
@@ -1418,7 +1921,13 @@
 							</span>
 
 
+						<!--
 						<input type="button" value="Broadcast" id="rawSubmitBtn" class="btn btn-primary">
+						-->
+
+<button type="button" class="btn btn-primary lang" key="Broadcast" id="rawSubmitBtn">Broadcast</button>
+
+
 						<br>
 					</div>
 
@@ -1524,7 +2033,7 @@
 
 
 					<div class="tab-pane tab-content" id="settings">
-						<h2>Settings </h2>
+						<h2  class="lang" key="Settings">Settings</h2>
 		 
 
 						<div class="row">
