@@ -1412,6 +1412,15 @@ console.log("totalInput:",($("#totalInput").html()*1))
 							var n = o.tx_output_n;
 							var script = (redeem.redeemscript==true) ? redeem.decodedRs : o.script;
 							var amount = ((o.value.toString()*1)/100000000).toFixed(8);
+
+
+							console.log("-------")
+							console.log("tx:",tx)
+							console.log("n:",n)
+							console.log("script:",script)
+							console.log("amount:",amount)
+							console.log("-------")
+
 							addOutput(tx, n, script, amount);
 						}
 					}
