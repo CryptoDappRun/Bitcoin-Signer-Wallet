@@ -1420,6 +1420,7 @@ console.log("totalInput:",($("#totalInput").html()*1))
 							console.log("script:",script)
 							console.log("amount:",amount)
 							console.log("-------")
+							
 
 							addOutput(tx, n, script, amount);
 						}
