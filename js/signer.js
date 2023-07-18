@@ -2,9 +2,9 @@ $(document).ready(function() {
 
 	/* open wallet code */
 
-	var explorer_tx = "https://coinb.in/tx/"
-	var explorer_addr = "https://coinb.in/addr/"
-	var explorer_block = "https://coinb.in/block/"
+	var explorer_tx = "https://blockchair.com/bitcoin/transaction/"
+	var explorer_addr = "https://blockchair.com/bitcoin/address/"
+	var explorer_block = "https://blockchair.com/bitcoin/block/"
 
 var MyBalance=0
 var ChainFee=0.00001
