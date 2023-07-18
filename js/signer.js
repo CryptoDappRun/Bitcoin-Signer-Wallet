@@ -1160,6 +1160,8 @@ var redeem = redeemingFrom($(this).val());
 
 		var host = $(this).attr('rel');
 
+
+console.log("host:",host)
         // api:             blockcypher     blockchair      chain.so
         // network name     "btc"           "bitcoin"       "BTC"
         // network name     "ltc"           "litecoin"      "LTC"
@@ -1186,7 +1188,8 @@ var redeem = redeemingFrom($(this).val());
 		} else if(host=='blockchair_dogecoin'){
 			listUnspentBlockchair(redeem, "dogecoin");
 		} else {
-			listUnspentDefault(redeem);
+			//listUnspentDefault(redeem);
+			listUnspentBlockcypher(redeem, "btc");
 		}
 
 		if($("#redeemFromStatus").hasClass("hidden")) {
@@ -2408,7 +2411,8 @@ console.log("o[0]",o[6])
 			});
 		} else {
 			$("#rawSubmitBtn").click(function(){
-				rawSubmitDefault(this); // revert to default
+				//rawSubmitDefault(this); // revert to default
+				rawSubmitblockcypher(this, "btc");
 			});
 		}
 	}
