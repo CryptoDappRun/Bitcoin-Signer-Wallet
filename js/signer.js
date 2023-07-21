@@ -29,13 +29,13 @@ var Coins =
     "48": {
         "Name":"Litecoin",
         "Fee": "0.0001",
-        "MaxFee": "0.1",
+        "MaxFee": "0.5",
         "Symbol": "ltc"
     },
     "30": {
         "Name":"Dogecoin",
         "Fee": "0.01",
-        "MaxFee": "10",
+        "MaxFee": "30",
         "Symbol": "doge"
     },
     "63": {
@@ -1167,6 +1167,9 @@ console.log("host:",host)
         // network name     "ltc"           "litecoin"      "LTC"
         // network name     "doge"          "dogecoin"      "DOGE"
 
+//https://blockchain.info/unspent?active=address
+
+
 		if(host=='chain.so_bitcoinmainnet'){
 			listUnspentChainso(redeem, "BTC");
         } else if(host=='chain.so_litecoin'){
@@ -1190,6 +1193,8 @@ console.log("host:",host)
 		} else {
 			//listUnspentDefault(redeem);
 			listUnspentBlockcypher(redeem, "btc");
+
+			//listUnspentBlockchainInfo(redeem, "btc");
 		}
 
 		if($("#redeemFromStatus").hasClass("hidden")) {
@@ -1393,6 +1398,66 @@ console.log("totalInput:",($("#totalInput").html()*1))
 	}
 
 
+
+
+	/* retrieve unspent data from  BlockchainInfo */
+	function listUnspentBlockchainInfo(redeem,network){
+
+$.ajax ({
+			type: "GET",
+			url: "https://blockchain.info/unspent?active="+redeem.addr,
+			dataType: "json",
+			error: function(data) {
+				$("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
+			    console.log("error data:",data)
+			},
+			success: function(data) {
+				console.log("BlockchainInfo data:",data)
+				if (data.notice=="") { // 
+					$("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
+					for(var i in data.unspent_outputs){
+						var o = data.unspent_outputs[i];
+						var tx = ((""+o.tx_hash).match(/.{1,2}/g).reverse()).join("")+'';
+						if(tx.match(/^[a-f0-9]+$/)){
+							var n = o.tx_output_n;
+							var script = (redeem.redeemscript==true) ? redeem.decodedRs : o.script;
+							var amount = ((o.value.toString()*1)/100000000).toFixed(8);
+
+
+							console.log("-------")
+							console.log("tx:",tx)
+							console.log("n:",n)
+							console.log("script:",script)
+							console.log("amount:",amount)
+							console.log("-------")
+							
+
+							addOutput(tx, n, script, amount);
+						}
+					}
+
+
+				//	$("#SelfAmountID").val(($("#totalInput").html()*1))
+//console.log("totalInput",($("#totalInput").html()*1))
+
+				} else {
+					$("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs.');
+				console.log("else error data:",data)
+				}
+			},
+			complete: function(data, status) {
+				$("#redeemFromBtn").html("Load").attr('disabled',false);
+				totalInputAmount();
+			}
+		});
+
+
+
+
+	}
+
+
+
 	/* retrieve unspent data from blockcypher */
 	function listUnspentBlockcypher(redeem,network){
 		$.ajax ({
@@ -1401,8 +1466,10 @@ console.log("totalInput:",($("#totalInput").html()*1))
 			dataType: "json",
 			error: function(data) {
 				$("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
+			console.log("listUnspentBlockcypher error data:",data)
 			},
 			success: function(data) {
+				console.log("data:",data)
 				if (data.address) { // address field will always be present, txrefs is only present if there are UTXOs
 					$("#redeemFromAddress").removeClass('hidden').html('<span class="glyphicon glyphicon-info-sign"></span> Retrieved unspent inputs from address <a href="'+explorer_addr+redeem.addr+'" target="_blank">'+redeem.addr+'</a>');
 					for(var i in data.txrefs){
@@ -1432,6 +1499,7 @@ console.log("totalInput:",($("#totalInput").html()*1))
 
 				} else {
 					$("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs.');
+				console.log("listUnspentBlockcypher else error data:",data)
 				}
 			},
 			complete: function(data, status) {
@@ -1595,9 +1663,12 @@ $("#Tips").html("")
 
 
 
+//console.log("coinjs.pub:",parseFloat(Coins[coinjs.pub].MaxFee) )
+//console.log("transactionFee:",parseFloat($("#transactionFee").val()) )
+
 
 // too high or too low.
-if ($("#transactionFee").val()>Coins[coinjs.pub].MaxFee  || $("#transactionFee").val()<0) {
+if (parseFloat($("#transactionFee").val() )> parseFloat(Coins[coinjs.pub].MaxFee)   || $("#transactionFee").val()<0) {
 
 $("#transactionFee").val(Coins[coinjs.pub].MaxFee);
 $("#Tips").html("Fee is too high.")
